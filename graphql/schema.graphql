@@ -1,0 +1,44 @@
+"A datetime string with format `Y-m-d H:i:s`, e.g. `2018-05-23 13:43:32`."
+scalar DateTime @scalar(class: "Nuwave\\Lighthouse\\Schema\\Types\\Scalars\\DateTime")
+
+"Indicates what fields are available at the top level of a query operation."
+type Query {
+  "Read post"
+  allPosts(
+    id: ID
+    title: String
+    content: String
+  ): [PostModel]
+}
+
+type PostModel {
+  id: ID!
+  name: String!
+  text: String!
+  created_at: DateTime!
+  updated_at: DateTime!
+}
+
+input PostInput {
+  name: String!
+  text: String!
+}
+
+type Mutation {
+  "Create post"
+  createPost(name: String!, text: String!): Post!
+
+  "Delete post"
+  deletePost(id: ID!): Post
+
+  "Update post"
+  updatePost(id: ID!, name: String!, text: String!): Post
+}
+
+type Post {
+  id: ID!
+  name: String!
+  text: String!
+  created_at: String!
+  updated_at: String!
+}
