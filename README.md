@@ -35,8 +35,26 @@ Para obtener todos los post (READ):
 
 
 Para crear un post (CREATE):
+mutation {
+  createPost(name: "Nombre del post", text: "Contenido del post") {
+    id
+    name
+    text
+    created_at
+    updated_at
+  }
+}
 
 Borrar un post (DELETE):
+mutation {
+  deletePost(id: 10) {
+    id
+    name
+    text
+    created_at
+    updated_at
+  }
+}
 
 Actualizar un post (UPDATE):
 mutation {
